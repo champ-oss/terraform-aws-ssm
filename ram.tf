@@ -2,6 +2,7 @@ resource "aws_ram_resource_share" "this" {
   count                     = length(var.shared_accounts) == 0 ? 0 : 1
   name                      = "${var.git}-ssm-${random_string.identifier.result}"
   allow_external_principals = var.allow_external_principals
+  permission_arns           = [aws_cloudformation_stack.ram_permission[0].outputs["RamPermissionArn"]]
   tags                      = merge(local.tags, var.tags)
 }
 
