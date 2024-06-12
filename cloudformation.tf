@@ -33,6 +33,6 @@ resource "aws_cloudformation_stack" "ram_permission" {
   })
 
   lifecycle {
-    replace_triggered_by = [var.shared_principal_arns]
+    replace_triggered_by = [aws_cloudformation_stack.ram_permission[0]]
   }
 }
