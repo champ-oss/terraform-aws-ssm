@@ -1,4 +1,3 @@
-# Create a standard encrypted SSM parameter
 module "this" {
   source = "../../"
   git    = "terraform-aws-ssm"
