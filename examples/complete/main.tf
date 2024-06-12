@@ -1,23 +1,16 @@
-data "aws_vpcs" "this" {
-  tags = {
-    purpose = "vega"
+terraform {
+  required_version = ">= 1.2.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 4.30.0"
+    }
   }
 }
 
-data "aws_subnets" "this" {
-  tags = {
-    purpose = "vega"
-    Type    = "Private"
-  }
-
-  filter {
-    name   = "vpc-id"
-    values = [data.aws_vpcs.this.ids[0]]
-  }
-}
-
+# Create a standard encrypted SSM parameter
 module "this" {
-  source             = "../../"
-  private_subnet_ids = data.aws_subnets.this.ids
-  vpc_id             = data.aws_vpcs.this.ids[0]
+  source = "../../"
+  git    = "terraform-aws-ssm"
+  name   = "/terraform-aws-ssm/standard"
 }
