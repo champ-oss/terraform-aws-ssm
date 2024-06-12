@@ -1,7 +1,7 @@
 resource "aws_cloudformation_stack" "ram_permission" {
   count = length(var.shared_accounts) == 0 ? 0 : 1
   name  = "${var.git}-ssm-${random_string.identifier.result}"
-  on_failure = "DELETE"
+
   template_body = jsonencode({
     Resources = {
       RamPermission = {
