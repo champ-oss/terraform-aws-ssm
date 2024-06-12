@@ -31,4 +31,8 @@ resource "aws_cloudformation_stack" "ram_permission" {
       },
     }
   })
+
+  lifecycle {
+    replace_triggered_by = [template_body]
+  }
 }
