@@ -2,5 +2,5 @@ module "this" {
   source = "../../"
   git    = "terraform-aws-ssm"
   name   = "/terraform-aws-ssm/standard"
-  value = "this is a test"
+  value  = "this is a test"
 }

@@ -48,7 +48,7 @@ variable "tags" {
 variable "tier" {
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter#tier"
   type        = string
-  default = "Advanced"
+  default     = "Advanced"
 }
 
 variable "type" {
