@@ -1,3 +1,9 @@
+variable "allow_external_principals" {
+  description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ram_resource_share#allow_external_principals"
+  type        = bool
+  default     = false
+}
+
 variable "git" {
   description = "Name of the Git repo"
   type        = string
@@ -37,6 +43,12 @@ variable "kms_deletion_window_in_days" {
 variable "name" {
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter#name"
   type        = string
+}
+
+variable "shared_accounts" {
+  description = "AWS accounts to share the SSM parameter"
+  type        = list(string)
+  default     = []
 }
 
 variable "tags" {

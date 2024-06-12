@@ -4,6 +4,11 @@ module "kms" {
   git                     = var.git
   name                    = "alias/${var.git}-ssm-${random_string.identifier.result}"
   deletion_window_in_days = var.kms_deletion_window_in_days
-  account_actions         = []
-  tags                    = merge(local.tags, var.tags)
+  account_actions = [
+    for account in var.shared_accounts : {
+      account_id = account
+      actions    = ["kms:Decrypt"]
+    }
+  ]
+  tags = merge(local.tags, var.tags)
 }

@@ -5,4 +5,5 @@ module "this" {
   name       = "/terraform-aws-ssm/advanced"
   value      = "this is a test"
   enable_kms = true
+  shared_accounts = []
 }
