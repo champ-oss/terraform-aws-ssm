@@ -14,7 +14,12 @@ resource "aws_cloudformation_stack" "ram_permission" {
               "ssm:DescribeParameters",
               "ssm:GetParameter",
               "ssm:GetParameters"
-            ]
+            ],
+            "Condition" : {
+              "StringLike" : {
+                "aws:PrincipalArn" : var.shared_principal_arns
+              }
+            }
           }
         }
       }
