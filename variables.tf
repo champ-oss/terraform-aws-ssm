@@ -80,12 +80,6 @@ variable "value" {
   type        = string
 }
 
-variable "permission_arns" {
-  description = "permission_arns"
-  type        = list(string)
-  default     = []
-}
-
 variable "enable_ram_permission" {
   description = "Enable the creation of RAM permissions"
   type        = bool
