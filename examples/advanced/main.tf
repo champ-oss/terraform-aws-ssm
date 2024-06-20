@@ -6,5 +6,4 @@ module "this" {
   value                 = "this is a test"
   enable_kms            = true
   shared_accounts       = []
-  shared_principal_arns = ["*"]
 }
