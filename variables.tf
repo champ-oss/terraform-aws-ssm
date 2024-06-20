@@ -51,6 +51,12 @@ variable "shared_accounts" {
   default     = []
 }
 
+variable "shared_principal_arns" {
+  description = "AWS principal ARN patterns to share the SSM parameter"
+  type        = list(string)
+  default     = ["*"]
+}
+
 variable "tags" {
   description = "Tags to assign to resources"
   type        = map(string)
@@ -72,4 +78,16 @@ variable "type" {
 variable "value" {
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter#value"
   type        = string
+}
+
+variable "permission_arns" {
+  description = "permission_arns"
+  type        = list(string)
+  default     = []
+}
+
+variable "enable_ram_permission" {
+  description = "Enable the creation of RAM permissions"
+  type        = bool
+  default     = false
 }
