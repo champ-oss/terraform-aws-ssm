@@ -51,12 +51,6 @@ variable "shared_accounts" {
   default     = []
 }
 
-variable "shared_principal_arns" {
-  description = "AWS principal ARN patterns to share the SSM parameter"
-  type        = list(string)
-  default     = ["*"]
-}
-
 variable "tags" {
   description = "Tags to assign to resources"
   type        = map(string)
