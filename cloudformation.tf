@@ -1,6 +1,6 @@
 # There is not currently a Terraform resource for a RAM permission
 resource "aws_cloudformation_stack" "ram_permission" {
-  count = length(var.shared_accounts) == 0 ? 0 : 1
+  count = var.enable_ram_permission ? 1 : 0
   name  = "${var.git}-ssm-${random_string.identifier.result}"
 
   template_body = jsonencode({

@@ -79,3 +79,9 @@ variable "value" {
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter#value"
   type        = string
 }
+
+variable "enable_ram_permission" {
+  description = "Enable the creation of RAM permissions"
+  type        = bool
+  default     = false
+}
