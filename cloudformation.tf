@@ -1,3 +1,7 @@
+resource "terraform_data" "shared_principal_arns" {
+  input = var.shared_principal_arns
+}
+
 # There is not currently a Terraform resource for a RAM permission
 resource "aws_cloudformation_stack" "ram_permission" {
   count = var.enable_ram_permission ? 1 : 0
@@ -33,4 +37,8 @@ resource "aws_cloudformation_stack" "ram_permission" {
       },
     }
   })
+
+  lifecycle {
+    replace_triggered_by = [terraform_data.shared_principal_arns]
+  }
 }
