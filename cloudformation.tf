@@ -1,4 +1,5 @@
 resource "terraform_data" "shared_principal_arns" {
+  count = var.enable_ram_permission ? 1 : 0
   input = var.shared_principal_arns
 }
 
