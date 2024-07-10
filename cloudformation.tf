@@ -1,19 +1,19 @@
 resource "terraform_data" "shared_principal_arns" {
-  count = var.enable_ram_permission ? 1 : 0
+  count = var.enable_ram_permission && var.enabled ? 1 : 0
   input = var.shared_principal_arns
 }
 
 # There is not currently a Terraform resource for a RAM permission
 resource "aws_cloudformation_stack" "ram_permission" {
-  count = var.enable_ram_permission ? 1 : 0
-  name  = "${var.git}-ssm-${random_string.identifier.result}"
+  count = var.enable_ram_permission && var.enabled ? 1 : 0
+  name  = "${var.git}-ssm-${random_string.identifier[0].result}"
 
   template_body = jsonencode({
     Resources = {
       RamPermission = {
         Type = "AWS::RAM::Permission"
         Properties = {
-          Name         = "${var.git}-ssm-${random_string.identifier.result}"
+          Name         = "${var.git}-ssm-${random_string.identifier[0].result}"
           ResourceType = "ssm:Parameter"
           PolicyTemplate = {
             "Effect" : "Allow",

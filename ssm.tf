@@ -1,6 +1,6 @@
 resource "aws_ssm_parameter" "this" {
-  count       = var.enable_resources ? 1 : 0
-  name        = var.enable_random_name_suffix ? "${var.name}-${random_string.identifier.result}" : var.name
+  count       = var.enable_resources && var.enabled ? 1 : 0
+  name        = var.enable_random_name_suffix ? "${var.name}-${random_string.identifier[0].result}" : var.name
   description = var.description != null ? var.description : var.git
   type        = var.type
   value       = var.value
