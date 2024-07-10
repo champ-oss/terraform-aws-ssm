@@ -10,5 +10,5 @@ module "kms" {
       actions = ["kms:Decrypt"]
     }
   ]
-  tags    = merge(local.tags, var.tags)
+  tags = merge(local.tags, var.tags)
 }
