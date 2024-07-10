@@ -11,5 +11,5 @@ module "kms" {
     }
   ]
   tags    = merge(local.tags, var.tags)
-  enabled = var.enable_kms
+  enabled = var.enabled
 }
