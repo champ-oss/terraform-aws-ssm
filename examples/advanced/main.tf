@@ -8,3 +8,7 @@ module "this" {
   shared_accounts       = []
   shared_principal_arns = ["*"]
 }
+
+output "outputs" {
+  value = module.this
+}
