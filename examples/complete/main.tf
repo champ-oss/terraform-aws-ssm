@@ -4,3 +4,7 @@ module "this" {
   name   = "/terraform-aws-ssm/standard"
   value  = "this is a test"
 }
+
+output "outputs" {
+  value = module.this
+}
