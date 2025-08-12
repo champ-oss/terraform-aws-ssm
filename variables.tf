@@ -46,7 +46,7 @@ variable "name" {
 }
 
 variable "shared_accounts" {
-  description = "AWS accounts to share the SSM parameter"
+  description = "AWS accounts to share the SSM parameters"
   type        = list(string)
   default     = []
 }
