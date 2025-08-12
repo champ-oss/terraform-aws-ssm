@@ -9,7 +9,7 @@ resource "aws_ram_resource_share" "this" {
 resource "aws_ram_principal_association" "this" {
   for_each           = var.enabled ? toset(var.shared_accounts) : toset([])
   principal          = each.value
-  resource_share_arn = aws_ram_resource_share.this[0].arn
+  resource_share_arn = try(aws_ram_resource_share.this[0].arn, null)
 }
 
 resource "aws_ram_resource_association" "this" {
